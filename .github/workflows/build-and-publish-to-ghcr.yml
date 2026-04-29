@@ -7,6 +7,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - Dockerfile
   workflow_dispatch:
   schedule:
     # run every day at 01:30
