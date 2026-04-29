@@ -14,6 +14,14 @@ on:
     # run every day at 01:30
     - cron: '30 1 * * *'
 
+# Prevent multiple workflow runs from racing to ensure that pushes are made
+# sequentialy for the main branch. Also cancel in progress workflow runs for
+# pull requests only.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  # cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  cancel-in-progress: true
+
 # Defines two custom environment variables for the workflow. These are used for
 # the Container registry domain, and a name for the Docker image that this
 # workflow builds.
