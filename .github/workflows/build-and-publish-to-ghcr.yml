@@ -3,7 +3,6 @@
 #
 name: Create and publish a container image
 
-# only run this manually
 on:
   push:
     branches:
